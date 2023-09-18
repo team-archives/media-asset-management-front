@@ -1,7 +1,7 @@
 import { ThemeProvider, Global } from '@emotion/react';
-import theme from './styles/theme';
-import reset from './styles/reset';
 import styled from '@emotion/styled';
+import theme from '@src/styles/theme';
+import reset from '@src/styles/reset';
 
 function App() {
   return (
