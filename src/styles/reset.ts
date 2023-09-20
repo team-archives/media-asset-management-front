@@ -6,6 +6,51 @@ const reset = css`
     License: none (public domain)
 */
 
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100;
+    src: url('/fonts/Roboto-Thin.ttf');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 300;
+    src: url('/fonts/Roboto-Light.ttf');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('/fonts/Roboto-Regular.ttf');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 500;
+    src: url('/fonts/Roboto-Medium.ttf');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 700;
+    src: url('/fonts/Roboto-Bold.ttf');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 900;
+    src: url('/fonts/Roboto-Black.ttf');
+  }
+  * {
+    box-sizing: border-box;
+  }
   html,
   body,
   div,
@@ -93,6 +138,10 @@ const reset = css`
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    text-decoration: none;
+  }
+  a {
+    color: inherit;
   }
   /* HTML5 display-role reset for older browsers */
   article,
@@ -109,6 +158,7 @@ const reset = css`
     display: block;
   }
   body {
+    font-family: 'Roboto';
     line-height: 1;
   }
   ol,

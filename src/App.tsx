@@ -1,19 +1,16 @@
-import { ThemeProvider, Global } from '@emotion/react';
-import styled from '@emotion/styled';
-import theme from '@src/styles/theme';
-import reset from '@src/styles/reset';
+import Index from '@src/Page/Index';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Global styles={reset} />
-      <Test>asdf</Test>
-    </ThemeProvider>
+    <Routes>
+      <Route path="/" element={<Index />} />
+      {/* Using path="*"" means "match anything", so this route
+            acts like a catch-all for URLs that we don't have explicit
+            routes for. */}
+      {/* <Route path="*" element={<NoMatch />} /> */}
+    </Routes>
   );
 }
-
-const Test = styled.div`
-  color: ${({ theme }) => theme.palette.cnps.red};
-`;
 
 export default App;

@@ -1,6 +1,6 @@
 import ApiClient from '@src/api/Base/ApiClient';
 
-interface LoginPayload {
+export interface LoginPayload {
   account: string;
   password: string;
 }

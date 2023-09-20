@@ -1,6 +1,6 @@
 import ApiClient from '@src/api/Base/ApiClient';
 
-interface SignupPayload {
+export interface SignupPayload {
   account: string;
   name: string;
   gender: number;
