@@ -12,30 +12,32 @@ const RightBox = () => {
 
   return (
     <RightBoxContainer>
-      <LogoWrapper>
-        <img src="/Index/logo.png" alt="logo" width={30} height={30} />
-        Media Buddies
-      </LogoWrapper>
-      <WelcomeTextWrapper>
-        <h2>귀하의 계정에 로그인하십시오.</h2>
-        <h5>방문을 환영합니다!</h5>
-      </WelcomeTextWrapper>
-      <ContactUsWrapper>
-        <strong>Contacts</strong>
-        <span>Email: dogineer.dev@gmail.com</span>
-        <span>Tel : 010-6606-1698</span>
-      </ContactUsWrapper>
-      <RightBoxForm />
+      <WidthWrapper>
+        <LogoWrapper>
+          <img src="/Index/logo.png" alt="logo" width={30} height={30} />
+          Media Buddies
+        </LogoWrapper>
+        <WelcomeTextWrapper>
+          <h2>귀하의 계정에 로그인하십시오.</h2>
+          <h5>방문을 환영합니다!</h5>
+        </WelcomeTextWrapper>
+        <ContactUsWrapper>
+          <strong>Contacts</strong>
+          <span>Email: dogineer.dev@gmail.com</span>
+          <span>Tel : 010-6606-1698</span>
+        </ContactUsWrapper>
+        <RightBoxForm />
 
-      <SignupLinkWrapper>
-        <LinkButton type="button" onClick={handleSignupModal}>
-          비밀번호 찾기
-        </LinkButton>
-        |
-        <LinkButton type="button" onClick={handleSignupModal}>
-          사용자 신청
-        </LinkButton>
-      </SignupLinkWrapper>
+        <SignupLinkWrapper>
+          <LinkButton type="button" onClick={handleSignupModal}>
+            비밀번호 찾기
+          </LinkButton>
+          |
+          <LinkButton type="button" onClick={handleSignupModal}>
+            사용자 신청
+          </LinkButton>
+        </SignupLinkWrapper>
+      </WidthWrapper>
       <SignupModal open={open} setOpen={setOpen} />
     </RightBoxContainer>
   );
@@ -43,12 +45,17 @@ const RightBox = () => {
 
 const RightBoxContainer = styled.div`
   width: 50%;
-  padding: 48px;
+  display: flex;
+  color: ${({ theme }) => theme.palette.cnps.black};
+`;
+
+const WidthWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 32px;
-  color: ${({ theme }) => theme.palette.cnps.black};
+  max-width: 480px;
+  margin: 0 auto;
 `;
 
 const LogoWrapper = styled.div`
