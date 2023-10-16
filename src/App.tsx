@@ -12,6 +12,10 @@ import {
 import IndexPage from '@src/Page/Index';
 import ClipManagement from '@src/Page/Clips/ClipManagement';
 import Ingest from '@src/Page/Clips/Ingest';
+import TeamManagement from '@src/Page/AdminMenu/TeamManagement';
+import UserManagement from '@src/Page/AdminMenu/UserManagement';
+import DeptManagement from '@src/Page/AdminMenu/DeptManagement';
+import RankManagement from '@src/Page/AdminMenu/RankManagement';
 
 function App() {
   return (
@@ -20,10 +24,10 @@ function App() {
         <Route path={INDEX_URL} element={<IndexPage />} />
         <Route path={CLIPS_URL} element={<ClipManagement />} />
         <Route path={INGEST_URL} element={<Ingest />} />
-        <Route path={ADMIN_MANAGEMENT_TEAM_URL} element={<IndexPage />} />
-        <Route path={ADMIN_MANAGEMENT_USER_URL} element={<IndexPage />} />
-        <Route path={ADMIN_MANAGEMENT_DEPT_URL} element={<IndexPage />} />
-        <Route path={ADMIN_MANAGEMENT_RANK_URL} element={<IndexPage />} />
+        <Route path={ADMIN_MANAGEMENT_TEAM_URL} element={<TeamManagement />} />
+        <Route path={ADMIN_MANAGEMENT_USER_URL} element={<UserManagement />} />
+        <Route path={ADMIN_MANAGEMENT_DEPT_URL} element={<DeptManagement />} />
+        <Route path={ADMIN_MANAGEMENT_RANK_URL} element={<RankManagement />} />
       </Routes>
     </Layout>
   );

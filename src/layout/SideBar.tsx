@@ -14,8 +14,10 @@ import {
   ADMIN_MANAGEMENT_RANK_URL,
 } from '@src/constants/url';
 import { setSidebarTitle } from '@src/utils/setLayoutTitles';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { GoQuestion } from 'react-icons/go';
+import DarkModeToggle from '@src/components/DarkModeToggle';
+
 const SIDE_BAR_PAGES_MENU = [
   {
     title: 'Clips',
@@ -77,8 +79,8 @@ interface SideBarProps {
 }
 
 const SideBar = ({ showSideBar }: SideBarProps) => {
+  const navigate = useNavigate();
   const [currentMenu, setCurrentMenu] = useState('');
-
   const toggleSideBar = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (currentMenu === e.currentTarget.innerText) {
       setCurrentMenu('');
@@ -102,15 +104,36 @@ const SideBar = ({ showSideBar }: SideBarProps) => {
             {menu.title}
           </MenuItem>
           <SubMenuWrapper currentMenu={currentMenu} menu={menu.title} lenght={menu.children.length}>
-            {menu.children.map((subMenu) => (
-              <MenuSubItem
-                key={subMenu.title}
-                currentMenu={subMenu.title}
-                menu={setSidebarTitle(useLocation().pathname)}
-              >
-                {subMenu.title}
-              </MenuSubItem>
-            ))}
+            {menu.title === 'gitHub' ? (
+              <>
+                {menu.children.map((subMenu) => (
+                  <a key={subMenu.title} href={subMenu.link ?? ''} target="_blank" rel="noreferrer">
+                    <MenuSubItem
+                      currentMenu={subMenu.title}
+                      menu={setSidebarTitle(useLocation().pathname)}
+                    >
+                      {subMenu.title}
+                    </MenuSubItem>
+                  </a>
+                ))}
+              </>
+            ) : (
+              <>
+                {menu.children.map((subMenu) => (
+                  <MenuSubItem
+                    key={subMenu.title}
+                    currentMenu={subMenu.title}
+                    menu={setSidebarTitle(useLocation().pathname)}
+                    onClick={() => {
+                      if (!subMenu.link) return;
+                      navigate(subMenu.link);
+                    }}
+                  >
+                    {subMenu.title}
+                  </MenuSubItem>
+                ))}
+              </>
+            )}
           </SubMenuWrapper>
         </div>
       ))}
@@ -141,7 +164,7 @@ const SideBar = ({ showSideBar }: SideBarProps) => {
           <GoQuestion size={24} />
           Help & Info
         </HelpWrapper>
-        <DarkModeToggle>다크모드 토글</DarkModeToggle>
+        <DarkModeToggle />
       </SideBarFooter>
     </SideBarContainer>
   );
@@ -220,12 +243,6 @@ const HelpWrapper = styled(MenuHeader)`
   align-items: center;
   gap: 8px;
   font-size: 1rem;
-`;
-
-const DarkModeToggle = styled.div`
-  width: 100%;
-  height: 35px;
-  background-color: white;
 `;
 
 export default SideBar;
