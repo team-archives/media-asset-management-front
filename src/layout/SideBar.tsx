@@ -6,12 +6,12 @@ import { PiPackageLight } from 'react-icons/pi';
 import { BsClipboard2Check, BsGrid } from 'react-icons/bs';
 import { VscGithubAlt as GitHub } from 'react-icons/vsc';
 import {
-  CLIPS,
-  INGEST,
-  ADMIN_MANAGEMENT_TEAM,
-  ADMIN_MANAGEMENT_USER,
-  ADMIN_MANAGEMENT_DEPT,
-  ADMIN_MANAGEMENT_RANK,
+  CLIPS_URL,
+  INGEST_URL,
+  ADMIN_MANAGEMENT_TEAM_URL,
+  ADMIN_MANAGEMENT_USER_URL,
+  ADMIN_MANAGEMENT_DEPT_URL,
+  ADMIN_MANAGEMENT_RANK_URL,
 } from '@src/constants/url';
 import { setSidebarTitle } from '@src/utils/setLayoutTitles';
 import { useLocation } from 'react-router-dom';
@@ -21,18 +21,18 @@ const SIDE_BAR_PAGES_MENU = [
     title: 'Clips',
     icon: <HiOutlineVideoCamera size={24} />,
     children: [
-      { title: '클립관리', link: CLIPS },
-      { title: '인제스트', link: INGEST },
+      { title: '클립관리', link: CLIPS_URL },
+      { title: '인제스트', link: INGEST_URL },
     ],
   },
   {
     title: 'Admin Menu',
     icon: <PiPackageLight size={24} />,
     children: [
-      { title: '팀 & 프로그램 관리', link: ADMIN_MANAGEMENT_TEAM },
-      { title: '유저 관리', link: ADMIN_MANAGEMENT_USER },
-      { title: '부서 관리', link: ADMIN_MANAGEMENT_DEPT },
-      { title: '계급 관리', link: ADMIN_MANAGEMENT_RANK },
+      { title: '팀 & 프로그램 관리', link: ADMIN_MANAGEMENT_TEAM_URL },
+      { title: '유저 관리', link: ADMIN_MANAGEMENT_USER_URL },
+      { title: '부서 관리', link: ADMIN_MANAGEMENT_DEPT_URL },
+      { title: '계급 관리', link: ADMIN_MANAGEMENT_RANK_URL },
     ],
   },
   {
