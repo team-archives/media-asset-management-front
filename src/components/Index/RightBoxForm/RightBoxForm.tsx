@@ -24,7 +24,7 @@ const RightBoxForm = () => {
       } else {
         localStorage.removeItem('savedId');
       }
-      navigate('/main');
+      navigate('/user/clip');
     } catch (error) {
       alert(error);
     }
