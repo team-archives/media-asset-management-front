@@ -1,9 +1,10 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import { useState } from 'react';
 import Header from '@src/layout/Header';
 import { useLocation } from 'react-router-dom';
 import styled from '@emotion/styled';
 import SideBar from '@src/layout/SideBar';
-import theme from '@src/styles/theme';
+import { ContentContainer } from '@src/components/CommonStyledComponents/CommonStyledComponents';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const isIndex = useLocation().pathname === '/' ? true : false;
@@ -15,7 +16,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {!isIndex && <SideBar showSideBar={showSideBar} />}
       <MainContainer>
         {!isIndex && <Header showSideBar={showSideBar} toggleSideBar={toggleSideBar} />}
-        {children}
+        {!isIndex ? <ContentContainer>{children}</ContentContainer> : <>{children}</>}
       </MainContainer>
     </Container>
   );
