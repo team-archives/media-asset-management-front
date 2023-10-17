@@ -41,7 +41,7 @@ export const getClipList = () => {
  * @method: GET
  */
 export const getClipMediaType = () => {
-  const url = '/clip/list';
+  const url = '/clip/getMediaType';
   return ApiClient.get(url);
 };
 

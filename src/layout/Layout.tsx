@@ -4,6 +4,7 @@ import Header from '@src/layout/Header';
 import { useLocation } from 'react-router-dom';
 import styled from '@emotion/styled';
 import SideBar from '@src/layout/SideBar';
+import Footer from '@src/layout/Footer';
 import { ContentContainer } from '@src/components/CommonStyledComponents/CommonStyledComponents';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -17,6 +18,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <MainContainer>
         {!isIndex && <Header showSideBar={showSideBar} toggleSideBar={toggleSideBar} />}
         {!isIndex ? <ContentContainer>{children}</ContentContainer> : <>{children}</>}
+        {!isIndex && <Footer />}
       </MainContainer>
     </Container>
   );
