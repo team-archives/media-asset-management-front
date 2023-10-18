@@ -1,6 +1,6 @@
 import ApiClient from '@src/api/Base/ApiClient';
 
-interface CreateFolderPayload {
+export interface FolderType {
   id: number;
   name: string;
   p_id: number;
@@ -11,7 +11,7 @@ interface CreateFolderPayload {
  * @description: 폴더 생성
  * @method: POST
  */
-export const createFolder = (payload: CreateFolderPayload) => {
+export const createFolder = (payload: FolderType) => {
   const url = '/folder/create';
   return ApiClient.post(url, payload);
 };
@@ -23,7 +23,7 @@ export const createFolder = (payload: CreateFolderPayload) => {
  */
 export const getChildFolder = (num: number) => {
   const url = `/folder/show/${num}`;
-  return ApiClient.get(url);
+  return ApiClient.get<FolderType[]>(url);
 };
 
 /**
@@ -32,7 +32,7 @@ export const getChildFolder = (num: number) => {
  */
 export const getAllFolder = () => {
   const url = '/folder/show/all';
-  return ApiClient.get(url);
+  return ApiClient.get<FolderType[]>(url);
 };
 
 /**
@@ -40,7 +40,7 @@ export const getAllFolder = () => {
  * @method: GET
  */
 export const getFolderData = (folderId: number) => {
-  const url = `/folder/select${folderId}`;
+  const url = `/folder/select/${folderId}`;
   return ApiClient.get(url);
 };
 
