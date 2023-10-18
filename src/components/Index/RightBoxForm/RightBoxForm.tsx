@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { LoginPayload, login } from '@src/api/Normal/AuthAPI';
 import { useNavigate } from 'react-router-dom';
+import { setCookie } from '@src/utils/Cookie';
 
 // Todo: transition
 // Todo: 반응형과 자잘한 스타일 수정 특히 LeftBox의 size 고정시키는거
@@ -18,7 +19,8 @@ const RightBoxForm = () => {
   const loginSubmit: SubmitHandler<LoginPayload> = async (data) => {
     try {
       const res = await login(data);
-      console.log(res);
+      setCookie('accessToken', res.data.accessToken);
+      setCookie('refreshToken', res.data.refreshToken);
       if (savedId) {
         localStorage.setItem('savedId', watch('account'));
       } else {
