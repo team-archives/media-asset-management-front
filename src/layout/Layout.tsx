@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import styled from '@emotion/styled';
 import SideBar from '@src/layout/SideBar';
 import Footer from '@src/layout/Footer';
-import { ContentContainer } from '@src/components/CommonStyledComponents/CommonStyledComponents';
+import { ContentContainer } from '@src/components/StyledComponents/Common/CommonStyledComponents';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const isIndex = useLocation().pathname === '/' ? true : false;
