@@ -9,9 +9,14 @@ export interface LoginPayload {
  * @description: 로그인
  * @method: POST
  */
+interface LoginResponse {
+  accessToken: string;
+  refreshToken: string;
+  grantType: 'Bearer';
+}
 export const login = (payload: LoginPayload) => {
   const url = '/auth/token/login';
-  return ApiClient.post(url, payload);
+  return ApiClient.post<LoginResponse>(url, payload);
 };
 
 /**
