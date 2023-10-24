@@ -9,11 +9,14 @@ import {
 } from '@src/api/Normal/Folder';
 import { FcFolder, FcOpenedFolder } from 'react-icons/fc';
 import { MdKeyboardArrowRight, MdKeyboardArrowDown } from 'react-icons/md';
+import Modal from '@src/components/Common/Modal';
+import CreateFolderModal from '@src/components/Clips/ClipManagement/CreateFolderModal';
 
 const FolderViwer = () => {
   const [folders, setFolders] = useState<FolderType[]>([]);
   const [childFolders, setChildFolders] = useState<FolderType[]>([]);
   const [currentFolderId, setCurrentFolderId] = useState<number | null>(null);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   useEffect(() => {
     try {
@@ -47,47 +50,56 @@ const FolderViwer = () => {
   ) => {
     try {
       e.preventDefault();
-      console.log(ParentNode);
-      // const res = await createFolder('test');
+      setIsOpenModal((prev) => !prev);
+      // const res = await createFolder(ParentNode);
       // console.log(res);
     } catch (error) {
       alert(error);
     }
   };
 
-  return (
-    <FolderViewerContainer>
-      <Title>Folders</Title>
+  const closeModal = () => {
+    setIsOpenModal(false);
+  };
 
-      {folders.map((folder) => (
-        <div key={folder.id}>
-          <Node
-            key={folder.id}
-            onClick={() => handleChildFolder(folder.id)}
-            onContextMenu={(e) => handleCreateFolder(e, folder)}
-          >
-            <MdKeyboardArrowRight />
-            <FcFolder size={20} />
-            {folder.name}
-          </Node>
-          {currentFolderId === folder.id &&
-            childFolders.map((childFolder) => (
-              <div key={childFolder.id}>
-                {folder.id === childFolder.p_id && (
-                  <ChildNode
-                    onClick={() => handleChildFolder(folder.id)}
-                    onContextMenu={(e) => handleCreateFolder(e, folder)}
-                  >
-                    <MdKeyboardArrowDown />
-                    <FcOpenedFolder size={20} />
-                    {childFolder.name}
-                  </ChildNode>
-                )}
-              </div>
-            ))}
-        </div>
-      ))}
-    </FolderViewerContainer>
+  return (
+    <>
+      <Modal open={isOpenModal} onClose={closeModal}>
+        <CreateFolderModal parentFolderId={currentFolderId} onClose={closeModal} />
+      </Modal>
+
+      <FolderViewerContainer>
+        <Title>Folders</Title>
+        {folders.map((folder) => (
+          <div key={folder.id}>
+            <Node
+              key={folder.id}
+              onClick={() => handleChildFolder(folder.id)}
+              onContextMenu={(e) => handleCreateFolder(e, folder)}
+            >
+              <MdKeyboardArrowRight />
+              <FcFolder size={20} />
+              {folder.name}
+            </Node>
+            {currentFolderId === folder.id &&
+              childFolders.map((childFolder) => (
+                <div key={childFolder.id}>
+                  {folder.id === childFolder.p_id && (
+                    <ChildNode
+                      onClick={() => handleChildFolder(folder.id)}
+                      onContextMenu={(e) => handleCreateFolder(e, folder)}
+                    >
+                      <MdKeyboardArrowDown />
+                      <FcOpenedFolder size={20} />
+                      {childFolder.name}
+                    </ChildNode>
+                  )}
+                </div>
+              ))}
+          </div>
+        ))}
+      </FolderViewerContainer>
+    </>
   );
 };
 
@@ -102,8 +114,6 @@ const Title = styled.div`
   font-weight: bolder;
   margin-bottom: 8px;
 `;
-
-const NodeContainer = styled.div``;
 
 const Node = styled.div`
   width: 10rem;
