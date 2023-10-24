@@ -9,7 +9,8 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/warnings", // 이 plugin을 사용하면 중복된 경로의 import를 하나로 합쳐줌
-    "plugin:import/errors"
+    "plugin:import/errors",
+    "plugin:prettier/recommended" // eslint-plugin-prettier와 eslint-config-prettier를 사용해 prettier의 eslint 플러그인을 사용할 수 있게 해줌
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
